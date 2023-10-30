@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
@@ -75,7 +76,7 @@ public class Ball : MonoBehaviour
         if(other.gameObject.tag != gameObject.tag)
         {
             //GameOver
-            Debug.Log("Game Over !");
+            Invoke("RestartGame",1);
             Destroy(gameObject);
         }
 
@@ -83,6 +84,11 @@ public class Ball : MonoBehaviour
 
         int _randomIndex = Random.Range(0, _ballSprites.Length);
         RandomBallColor(_randomIndex);
+    }
+
+    void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }
