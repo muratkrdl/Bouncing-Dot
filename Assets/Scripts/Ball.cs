@@ -76,19 +76,16 @@ public class Ball : MonoBehaviour
         if(other.gameObject.tag != gameObject.tag)
         {
             //GameOver
-            Invoke("RestartGame",1);
-            Destroy(gameObject);
+            StartCoroutine(gameManager.RestartGame());
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<Collider2D>().enabled = false;
+            return;
         }
 
-        gameManager.score++;
+        gameManager.InxreaseScore();
 
         int _randomIndex = Random.Range(0, _ballSprites.Length);
         RandomBallColor(_randomIndex);
-    }
-
-    void RestartGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }

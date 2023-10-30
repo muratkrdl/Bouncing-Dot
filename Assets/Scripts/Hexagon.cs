@@ -6,7 +6,6 @@ public class Hexagon : MonoBehaviour
 {
     [SerializeField] float waitRotateTime = 0.5f;
 
-
     void Update()
     {
         StartCoroutine(Rotate());
